@@ -10,7 +10,7 @@ public class Game1 : Game
 	{
 		Tad.Xna.Common.BasicSetup.AddGodAvatarWithCamera(this);
 
-		Components.Add(new TestObject(this));
+		Components.Add(new TestEntity(this));
 
 		base.Initialize();
 	}

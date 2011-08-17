@@ -104,6 +104,7 @@
     <Compile Include="Entities\GameEntity.cs" />
     <Compile Include="Entities\IGameEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

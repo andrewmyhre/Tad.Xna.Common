@@ -16,7 +16,7 @@ namespace Tad.Xna.Common.Cameras
         // Set distance from the camera of the near and far clipping planes.
         public float NearClip { get { return 0.1f; } }
         public float FarClip { get { return 10000.0f; } }
-        private Vector3 EyesPosition;
+        private Vector3 EyesPosition=new Vector3();
         private BoundingFrustum _viewFrustum;
 
 
