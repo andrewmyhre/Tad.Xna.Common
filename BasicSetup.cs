@@ -12,12 +12,13 @@ namespace Tad.Xna.Common
     {
         public static void AddGodAvatarWithCamera(Game game)
         {
-            Avatar.SetAvatar(new GodAvatar(game, new Vector3(0, 0, -50)));
-            Avatar.Default.SetOrientation(Quaternion.CreateFromYawPitchRoll(0, 0, 0));
-            game.Components.Add(Avatar.Default);
+            game.Components.Add(Avatar.AddAvatar(new GodAvatar(game, new Vector3(0, 0, -50), "God 1")));
+            Avatar.Current.SetOrientation(Quaternion.CreateFromYawPitchRoll(0, 0, 0));
+
+            game.Components.Add(Avatar.AddAvatar(new GodAvatar(game, new Vector3(0, 0, -150), "God 2")));
 
             Camera.SetCamera(new FirstPersonCamera(game));
-            Camera.Default.AttachTo(Avatar.Default);
+            Camera.Default.AttachTo(Avatar.Current);
             game.Components.Add(Camera.Default);
 
             game.Activated += new EventHandler<EventArgs>(game_Activated);
@@ -26,12 +27,12 @@ namespace Tad.Xna.Common
 
         static void game_Deactivated(object sender, EventArgs e)
         {
-            Avatar.Default.CaptureMouse = false;
+            Avatar.Current.CaptureMouse = false;
         }
 
         static void game_Activated(object sender, EventArgs e)
         {
-            Avatar.Default.CaptureMouse = true;
+            Avatar.Current.CaptureMouse = true;
         }
     }
 }

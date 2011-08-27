@@ -9,7 +9,7 @@ namespace Tad.Xna.Common.Avatars
         private int[] _boxIndices;
         private VertexPositionColor[] _boxCorners;
 
-        public TestAvatar(Game game) : base(game)
+        public TestAvatar(Game game, string label) : base(game, label)
         {
         }
 

@@ -6,6 +6,7 @@ namespace Tad.Xna.Common.Avatars
 {
     public interface IAvatar : IGameEntity
     {
+        string Label { get; set; }
         bool CaptureMouse { get; set; }
         Vector3 EyesPosition { get; }
         void AcceptInput(KeyboardState keyboard, GamePadState gamePad, MouseState mouse);

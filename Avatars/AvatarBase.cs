@@ -7,6 +7,7 @@ namespace Tad.Xna.Common.Avatars
 {
     public abstract class AvatarBase : GameEntity, IAvatar
     {
+        public string Label { get; set; }
         public bool CaptureMouse { get; set; }
         protected static float viewAngle = MathHelper.PiOver4;
         public float NearClip { get { return 0.1f; } }
@@ -36,8 +37,8 @@ namespace Tad.Xna.Common.Avatars
         protected static Vector3 WORLD_Z_AXIS = new Vector3(0.0f, 0.0f, 1.0f);
         
 
-        public AvatarBase(Game game) : base(game) {
-            
+        public AvatarBase(Game game, string label) : base(game) {
+            Label = label;
             Orientation = Quaternion.Identity;
             RotationSpeed *= 3f;
             ForwardSpeed *= 5f;

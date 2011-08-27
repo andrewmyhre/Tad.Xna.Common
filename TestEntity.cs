@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tad.Xna.Common.Cameras;
+using Tad.Xna.Common.Entities;
 
 namespace Tad.Xna.Common
 {
-    public class TestEntity : DrawableGameComponent
+    public class TestEntity : GameEntity
     {
         BasicEffect effect;
         private VertexBuffer testVBuffer;
@@ -14,6 +15,7 @@ namespace Tad.Xna.Common
         public TestEntity(Game game)
             : base(game)
         {
+            IsStatic = true;
         }
 
         public override void Initialize()
@@ -69,7 +71,6 @@ namespace Tad.Xna.Common
             {
                 pass.Apply();
 
-                //GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, 3, 0, 1);
                 GraphicsDevice.DrawUserIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 3, indices, 0, 1);
             }
         }

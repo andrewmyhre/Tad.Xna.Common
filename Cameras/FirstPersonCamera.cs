@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Tad.Xna.Common.Avatars;
 using Tad.Xna.Common.Entities;
 
 namespace Tad.Xna.Common.Cameras
@@ -9,6 +10,9 @@ namespace Tad.Xna.Common.Cameras
     public class FirstPersonCamera : GameEntity, ICamera
     {
         protected IGameEntity attachedTo;
+        SpriteBatch spriteBatch;
+
+        private SpriteFont font;
 
         // Set field of view of the camera in radians (pi/4 is 45 degrees).
         protected static float viewAngle = MathHelper.PiOver4;
@@ -48,6 +52,14 @@ namespace Tad.Xna.Common.Cameras
             attachedTo = Entity;
         }
 
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            font = Game.Content.Load<SpriteFont>("Default");
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.Update(gameTime);
@@ -57,6 +69,20 @@ namespace Tad.Xna.Common.Cameras
 
             UpdateCamera();
             
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+
+            if (attachedTo != null && attachedTo is IAvatar)
+            {
+                spriteBatch.Begin();
+                spriteBatch.DrawString(font, ((IAvatar)attachedTo).Label, 
+                    new Vector2(0,0), Color.White);
+                spriteBatch.End();
+                    
+            }
         }
 
         protected void MouseRotation(MouseState mouseState)
